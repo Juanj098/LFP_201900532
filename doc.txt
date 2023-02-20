@@ -1,0 +1,7 @@
+        for a in range(len(peliculas)):
+            if peliculas[a].actores2() != None:
+                # print(peliculas[a].actores())
+                acto=peliculas[a].actores2()
+                arr2.append(acto)
+
+        print(arr2)
