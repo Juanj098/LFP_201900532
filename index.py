@@ -231,7 +231,7 @@ while opc != "4":
             print("<----------------------------------->")
             opc4=input("Ingrese opcion de filtro: ")
             os.system("cls")
-        #->
+        
     elif opc == "3":#Grafica
         cadena ='''
         digraph main {
@@ -247,7 +247,7 @@ while opc != "4":
         #estilos nodo actor
         arrU=[]
         actt={}
-        cadena+= 'node [shape=box, style=filled, fillcolor="#9e2e6b"]\n'
+        cadena+= 'node [shape=box, style=filled, fillcolor="#00d278"]\n'
         #actor
         for w in range(len(peliculas)):
             if peliculas[w] != None:
@@ -271,10 +271,13 @@ while opc != "4":
                 rel = f'nodo{a+1}:p1 -> "{peliculas[a].actores4(b)}"\n'
                 cadena+=rel
         cadena += '}'
-        print(cadena)
         with open('Practica1.dot','w') as docu:
             docu.write(cadena)
-        os.system("dot-Tpng Practica1.dot -o Practica1.png")
+        os.system('dot -Tpng Practica1.dot -o Practica1.png')
+    elif opc == "4": #salida
+        print("<--------------------------------->")
+        print("<               :)                >")
+        print("<--------------------------------->")    
     else:
         print("opcion invalida ")
     print("<--------------------------------->")
