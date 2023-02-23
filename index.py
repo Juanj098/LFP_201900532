@@ -1,5 +1,6 @@
 import os
 
+os.system("cls")
 print('<----------Bienvenido------------->')
 Doc = input("Ingrese documento -> ")
 
@@ -49,6 +50,15 @@ class Movies:
     def generDato(self):
         return self.gender
 
+    def graphviz_n(self,x):
+        return  f'''\nnodo{x+1} [label=<
+        <table border="0"  cellborder="1" cellspacing="0">
+        <tr><td  bgcolor= "#ffc700" port="p1" colspan="2">{self.name}</td></tr>
+        <tr><td>{self.gender}</td><td>{self.year}</td></tr>
+        </table>>];\n \n'''  
+
+    def graphviz_a(self,item):
+        return f'\t"{self.actors[item]}"\n'
 
 print("<--------------------------------->")
 print("<             MENU                >")
@@ -223,7 +233,48 @@ while opc != "4":
             os.system("cls")
         #->
     elif opc == "3":#Grafica
-        print("opcion 3")
+        cadena ='''
+        digraph main {
+            graph[pad="0.5", nodesep="0.5", ranksep="2"]
+            node [shape=plain]
+            rankdir = LR;\n
+        '''
+        for c in range(len(peliculas)):
+            if peliculas[c].graphviz_n(c) != None:
+                node = peliculas[c].graphviz_n(c)
+                cadena+=node
+
+        #estilos nodo actor
+        arrU=[]
+        actt={}
+        cadena+= 'node [shape=box, style=filled, fillcolor="#9e2e6b"]\n'
+        #actor
+        for w in range(len(peliculas)):
+            if peliculas[w] != None:
+                for u in range(peliculas[w].actores3()):
+                    if peliculas[w].actores4(u)!=None:
+                        cad = f'\t"{peliculas[w].actores4(u)}"\n'
+                        arrU.append(cad)
+    
+        arrU.sort()
+        for ar in arrU:
+            if ar in actt:
+                actt[ar]+=1
+            else:
+                actt[ar]=1
+        for o in actt:
+            cadena+=o
+
+        #crear relaciones
+        for a in range(len(peliculas)):
+            for b in range(peliculas[a].actores3()):
+                rel = f'nodo{a+1}:p1 -> "{peliculas[a].actores4(b)}"\n'
+                cadena+=rel
+        cadena += '}'
+        print(cadena)
+        with open('Practica1.dot','w') as docu:
+            docu.write(cadena)
+        os.system("dot-Tpng Practica1.dot -o Practica1.png")
     else:
         print("opcion invalida ")
     print("<--------------------------------->")
