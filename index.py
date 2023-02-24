@@ -3,6 +3,7 @@ import os
 os.system("cls")
 print('<----------Bienvenido------------->')
 Doc = input("Ingrese documento -> ")
+os.system("cls")
 
 with open(Doc, 'r') as file:
     contenido = file.readlines()
@@ -59,7 +60,11 @@ class Movies:
 
     def graphviz_a(self,item):
         return f'\t"{self.actors[item]}"\n'
-
+    
+print("<--------------------------------->")
+print('Juan Jose Gerardi Hernandez')
+print('201900532')
+print('Lenguajes Formales y de programacion')
 print("<--------------------------------->")
 print("<             MENU                >")
 print("1. Gestionar peliculas")
@@ -127,11 +132,13 @@ while opc != "4":
 #-->
             
     elif opc == "2":#filtrado
-        print("<---------------------------->")
+        print("<----------------------------------->")
         print("a.Actor")
         print("b.Año de estreno")
         print("c.Genero")
-        print("<---------------------------->")
+        print("<----------------------------------->")
+        print("             (S) Salir               ")
+        print("<----------------------------------->")
         opc4=input("Ingrese opcion de filtro: ")
         os.system("cls")
         #->
