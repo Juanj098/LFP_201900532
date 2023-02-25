@@ -1,0 +1,93 @@
+
+        digraph main {
+            graph[pad="0.5", nodesep="0.5", ranksep="2"]
+            node [shape=plain]
+            rankdir = LR;
+
+        
+nodo1 [label=<
+        <table border="0"  cellborder="1" cellspacing="0">
+        <tr><td  bgcolor= "#ffc700" port="p1" colspan="2">The Avengers </td></tr>
+        <tr><td> Ficcion 
+</td><td>2012</td></tr>
+        </table>>];
+ 
+
+nodo2 [label=<
+        <table border="0"  cellborder="1" cellspacing="0">
+        <tr><td  bgcolor= "#ffc700" port="p1" colspan="2">Spiderman</td></tr>
+        <tr><td>Accion 
+</td><td>2002</td></tr>
+        </table>>];
+ 
+
+nodo3 [label=<
+        <table border="0"  cellborder="1" cellspacing="0">
+        <tr><td  bgcolor= "#ffc700" port="p1" colspan="2">The Amazing Spiderman</td></tr>
+        <tr><td>Accion
+</td><td>2012</td></tr>
+        </table>>];
+ 
+
+nodo4 [label=<
+        <table border="0"  cellborder="1" cellspacing="0">
+        <tr><td  bgcolor= "#ffc700" port="p1" colspan="2">The Amazing Spiderman 2</td></tr>
+        <tr><td>Accion 
+</td><td>2014</td></tr>
+        </table>>];
+ 
+
+nodo5 [label=<
+        <table border="0"  cellborder="1" cellspacing="0">
+        <tr><td  bgcolor= "#ffc700" port="p1" colspan="2">Spiderman Homecoming</td></tr>
+        <tr><td>Accion
+</td><td>2017</td></tr>
+        </table>>];
+ 
+
+nodo6 [label=<
+        <table border="0"  cellborder="1" cellspacing="0">
+        <tr><td  bgcolor= "#ffc700" port="p1" colspan="2">Avengers Infinity War</td></tr>
+        <tr><td>Accion
+</td><td>2018</td></tr>
+        </table>>];
+ 
+
+nodo7 [label=<
+        <table border="0"  cellborder="1" cellspacing="0">
+        <tr><td  bgcolor= "#ffc700" port="p1" colspan="2">Joker</td></tr>
+        <tr><td>Suspenso</td><td>2019</td></tr>
+        </table>>];
+ 
+node [shape=box, style=filled, fillcolor="#00d278"]
+	"Andrew Garfield"
+	"Chris Evans"
+	"Chris Hemsworth"
+	"Emma Stone"
+	"Joaquin Phoenix"
+	"Kirsten Dunst"
+	"Robert De Niro"
+	"Robert Downey Jr"
+	"Tobey Maguire"
+	"Tom Holland"
+	"Willem Dafoe"
+	"Zazie Beetz"
+	"Zendaya"
+nodo1:p1 -> "Robert Downey Jr"
+nodo1:p1 -> "Chris Evans"
+nodo1:p1 -> "Chris Hemsworth"
+nodo2:p1 -> "Tobey Maguire"
+nodo2:p1 -> "Kirsten Dunst"
+nodo2:p1 -> "Willem Dafoe"
+nodo3:p1 -> "Andrew Garfield"
+nodo3:p1 -> "Emma Stone"
+nodo4:p1 -> "Andrew Garfield"
+nodo4:p1 -> "Emma Stone"
+nodo5:p1 -> "Tom Holland"
+nodo5:p1 -> "Zendaya"
+nodo6:p1 -> "Robert Downey Jr"
+nodo6:p1 -> "Tom Holland"
+nodo7:p1 -> "Joaquin Phoenix"
+nodo7:p1 -> "Robert De Niro"
+nodo7:p1 -> "Zazie Beetz"
+}

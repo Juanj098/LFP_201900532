@@ -1,12 +1,6 @@
 import os
 
 os.system("cls")
-print('<----------Bienvenido------------->')
-Doc = input("Ingrese documento -> ")
-os.system("cls")
-
-with open(Doc, 'r') as file:
-    contenido = file.readlines()
 
 class Movies:
     def __init__(self,name,actors,year,gender,x):
@@ -31,6 +25,9 @@ class Movies:
     def id(self):
         return self.x
 
+    def peli(self):
+        return self.name
+    
     def actores2(self):
         for u in range(len(self.actors)):
             return self.actors[u].strip()  
@@ -61,32 +58,60 @@ class Movies:
     def graphviz_a(self,item):
         return f'\t"{self.actors[item]}"\n'
     
-print("<--------------------------------->")
+print("<---------------------------------->")
 print('Juan Jose Gerardi Hernandez')
 print('201900532')
 print('Lenguajes Formales y de programacion')
-print("<--------------------------------->")
-print("<             MENU                >")
+print("<---------------------------------->")
+print("<              MENU                >")
+print("0. Ingresar documento               ")
 print("1. Gestionar peliculas")
 print("2. Filtrado")
 print("3. Graficar")
 print("4. salir")
-print("<--------------------------------->")
+print("<---------------------------------->")
 opc = input("Ingrese opcion: ")
 os.system("cls")
-peliculas=[]
+peliculas = []
 actoresAr = []
-cont = 0
-for linea in contenido:
-    datos = linea.split(";")
-    person = datos[1].split(",")
-    actoresAr.append(person)
-    pelicula = Movies(datos[0],actoresAr[cont],datos[2],datos[3],cont)
-    cont= cont+1
-    peliculas.append(pelicula)
+
 #-->
 while opc != "4":
-    if opc == "1":#Gestionar peliculas
+    if opc =="0":
+        os.system("cls")
+        try:
+            print('<----------Bienvenido------------->')
+            Doc = input("Ingrese documento -> ")
+            os.system("cls")
+            with open(Doc, 'r') as file:
+                contenido = file.readlines()
+            cont = 0
+            for linea in contenido:
+                datos = linea.split(";")
+                person = datos[1].split(",")
+                actoresAr.append(person)
+                pelicula = Movies(datos[0],actoresAr[cont],datos[2],datos[3],cont)
+                cont= cont+1
+                peliculas.append(pelicula)
+
+            nam = []
+            for w in range(len(peliculas)):
+                if peliculas[w].peli() != None:
+                    dat = peliculas[w].peli()
+                    nam.append(dat)
+            for n in nam:  
+                r= nam.count(n)
+                if r >= 2:
+                    peliculas.clear()
+                    print("Documento no valido")
+                    break
+        except:
+            print("-------------------------------------")
+            print("")
+            print("    error al ingresar documento")
+            print("")
+
+    elif opc == "1":#Gestionar peliculas
 
         print("---------Gestionar peliculas---------")
         print("a.Mostrar peliculas")
@@ -102,20 +127,25 @@ while opc != "4":
                         print(peliculas[i].mostrar())
             elif opc2 =="b":
             #imprime actores 
-                print("<----------------------------------->")
-                for x in range(len(peliculas)):
-                    if peliculas[x].mostrarPelis() != None:
-                        print(peliculas[x].mostrarPelis())  
-                print("<----------------------------------->")
-                opc3 = input("Ingrese No. de pelicula: ")
-                os.system("cls")
-                opc3=int(opc3)
-                print("<----------------------------------->")
-                print("Actores")
-                for y in range(len(peliculas)):
-                    if opc3 == peliculas[y].id():
-                        if peliculas[y].actores() != None:
-                            print(peliculas[y].actores())
+                try:
+                    print("<----------------------------------->")
+                    for x in range(len(peliculas)):
+                        if peliculas[x].mostrarPelis() != None:
+                            print(peliculas[x].mostrarPelis())  
+                    print("<----------------------------------->")
+                    opc3 = input("Ingrese No. de pelicula: ")
+                    os.system("cls")
+                    opc3=int(opc3)
+                    print("<----------------------------------->")
+                    print("Actores")
+                    for y in range(len(peliculas)):
+                        if opc3 == peliculas[y].id():
+                            if peliculas[y].actores() != None:
+                                print(peliculas[y].actores())
+                except:
+                    os.system("cls")
+                    print("Opcion no valida")
+
             else:
                 print("Opcion Invalida")
             print("")
@@ -280,7 +310,7 @@ while opc != "4":
         cadena += '}'
         with open('Practica1.dot','w') as docu:
             docu.write(cadena)
-        os.system('dot -Tpng Practica1.dot -o Practica1.png')
+        os.system('dot -Tpdf Practica1.dot -o Practica1.pdf')
     elif opc == "4": #salida
         print("<--------------------------------->")
         print("<               :)                >")
@@ -289,6 +319,7 @@ while opc != "4":
         print("opcion invalida ")
     print("<--------------------------------->")
     print("<             MENU                >")
+    print("0. Ingresar documento               ")
     print("1. Gestionar peliculas")
     print("2. Filtrado")
     print("3. Graficar")
